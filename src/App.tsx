@@ -5,7 +5,7 @@ function App() {
 
   return (
     <>
-      <nav className="w-full sticky top-0 glass supports-backdrop-blur:bg-emerald-950 ">
+      <nav className="w-full sticky top-0 glass backdrop-blur-xs z-1 supports-backdrop-blur:bg-emerald-950 ">
         <ul className="flex justify-center gap-2 h-14 items-center">
           <li><img src={linkedinLogo} width={24} alt="linkedin logo" /></li>
           <li>...</li>
