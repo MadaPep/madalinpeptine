@@ -5,21 +5,37 @@ body {
   background-color: var(--color-emerald-950);
   overflow-x: hidden;
   color: var(--color-amber-50);
+
 }
 
 #root {
   height: 100%;
   width: 100%;
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-main {
-  padding: 0 100px 0 180px;
+
+section {
+  scroll-margin-top: 80px;
 }
 
 .line {
   transform: translate(150%, -50%);
 }
+
+.glass {
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+.glow {
+  -webkit-box-shadow: 0px 0px 32px 0px rgb(255, 255, 255);
+  -moz-box-shadow: 0px 0px 32px 0px rgb(255, 255, 255);
+  box-shadow: 0px 0px 32px 0px rgb(255, 255, 255);
+}
+
+
 /* 
 .glass {
   z-index: 1;
