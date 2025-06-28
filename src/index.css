@@ -1,8 +1,13 @@
 @import "tailwindcss";
 
+
+:root {
+  --gray-bg-hsl:0 0 10.6
+}
+
 body {
   width: 100dvw;
-  background-color: var(--color-emerald-950);
+  background-color: hsl(var(--gray-bg-hsl));
   overflow-x: hidden;
   color: var(--color-amber-50);
 
