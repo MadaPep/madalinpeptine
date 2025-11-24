@@ -1,17 +1,26 @@
 
 interface SectionProps {
-  id: string;
-  title: string;
-  description?: string;
+  item: {id: string; title: string; description: string; details?: {id: string; title: string; description: string;}[]};
+  className?: string;
   children?: React.ReactNode;
 }
 
-const section = ({id, title, description= "", children}: SectionProps) => {
+const section = ({ item, className = "", children }: SectionProps) => {
   return (
-    <section id={id}>
-      <h1 className="text-2xl font-semibold">{title}</h1>
-      <div>{description}</div>
+    <section id={item.id} className={className}>
+      <h1 className='text-2xl font-semibold'>{item.title}</h1>
+      <div>{item.description}</div>
       {children}
+      {item.details && item.details.length > 0 && (
+        <ul>
+          {item.details.map(detail => (
+            <li id={detail.id} key={detail.id} className="my-52">
+              <h2 className="text-xl font-semibold">{detail.title}</h2>
+              <p>{detail.description}</p>
+            </li>
+          ))}
+        </ul>
+      )}
     </section>
   );
 }

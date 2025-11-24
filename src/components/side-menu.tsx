@@ -4,6 +4,7 @@ interface SideMenuProps {
   menuItems: {
     id: string;
     title: string;
+    details?: { id: string; title: string; description: string; }[];
   }[];
 }
 
@@ -16,7 +17,7 @@ const SideMenu = ({ menuItems }: SideMenuProps) => {
       const isVisible = (
         // rect.top >= 60 &&
         rect.bottom >= 60 &&
-        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+        rect.top <= (window.innerHeight || document.documentElement.clientHeight)
       );
       return isVisible;
     })
@@ -61,22 +62,34 @@ const SideMenu = ({ menuItems }: SideMenuProps) => {
     <aside className="hidden md:flex justify-center sticky top-40 h-96 pt-1.5 ">
       <div className="flex flex-col w-80">
 
-        {menuItems.map((item, index) => (
-          <>
-            <div className="flex items-center gap-4">
-              <div className="flex justify-center w-5">
-                <div className={`${(inViewElement?.id === item.id ? "w-4 h-4 glow" : "w-2 h-2")} bg-amber-50 rounded-full transition-all`}></div>
-              </div>
-              <button onClick={() => handleScrollIntoView(item.id)} className={`${(inViewElement?.id === item.id ? "text-xl font-semibold ml-3 " : "")} cursor-pointer transition-all`}>{item.title}</button >
-            </div >
+        {
+          menuItems.map((item, index) => (
+            <div key={item.id} className="relative min-h-15">
+              <div className="flex items-center gap-4" >
+                <div className="flex justify-center w-5">
+                  <div className={`${(inViewElement?.id === item.id ? "w-4 h-4 glow" : "w-2 h-2")} bg-amber-50 rounded-full transition-all`}></div>
+                </div>
+                <button onClick={() => handleScrollIntoView(item.id)} className={`${(inViewElement?.id === item.id ? "text-xl font-semibold ml-3 " : "")} cursor-pointer transition-all`}>{item.title}</button >
+              </div >
 
-            {
-            index < menuItems.length - 1  && 
-            <div className="flex justify-center w-5">
-              <div className="w-0.5 h-16 -my-2.5 bg-amber-50"></div>
-            </div>}
-          </>
-        ))}
+              {
+                item.details && item.details.map((detail) => (
+                  <div key={detail.id}>
+                    <div className="flex items-center gap-4" >
+                      <button onClick={() => handleScrollIntoView(detail.id)} className={`${(inViewElement?.id === detail.id ? "text-xl font-semibold ml-3 " : "")} cursor-pointer transition-all`}>{detail.title}</button >
+                    </div >
+                  </div>
+                ))
+              }
+              {
+                index < menuItems.length - 1 &&
+                <div className="flex justify-center w-5 h-full absolute top-2.5 left-0">
+                  <div className="w-0.5 bg-amber-50 h-full"></div>
+                </div>
+              }
+            </div>
+          ))
+        }
 
       </div>
     </aside >
