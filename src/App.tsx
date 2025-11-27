@@ -16,17 +16,17 @@ const menuItems = [
     details: [
       {
         id: 'job1',
-        title: 'Frontend Developer at XYZ Company',
+        title: 'Mindset',
         description: 'Developed and maintained web applications using React and Angular. Collaborated with designers to implement user-friendly interfaces. Improved application performance by optimizing code and implementing best practices.'
       },
       {
         id: 'job2',
-        title: 'Junior Frontend Developer at ABC Inc.',
+        title: 'MediaEngine',
         description: 'Assisted in the development of web applications using HTML, CSS, and JavaScript. Participated in code reviews and contributed to team knowledge sharing sessions. Gained experience in responsive design and cross-browser compatibility.'
       },
       {
         id: 'job3',
-        title: 'Intern at Web Solutions Ltd.',
+        title: 'Koerber Technologies',
         description: 'Supported the development team in building and testing web applications. Learned about version control systems and agile development methodologies. Contributed to documentation and user guides for end-users.'
       }
     ]
